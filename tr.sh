@@ -23,10 +23,11 @@ tail -n +${process} ${inputf} | while read l;do
 	jpstr="${n#*\#}"
 	n="${n%%\#*}";
 
-	translated="$(trans -t zh ${jpstr})"
+	translated="$(${basepath}/trans.sh -t zh ${jpstr})"
+	echo "translated=[${translated}]"
 
-	soundmark=$(echo -e "$translated" | sed -n 2p)
-	trcontent=$(echo -e "$translated" | sed -n 4p)
+	soundmark=$(echo -e "${translated}" | sed -n 2p)
+	trcontent=$(echo -e "${translated}" | sed -n 4p)
 
 	echo "${process}: [${f}]#[${n}]#[${jpstr}${soundmark}=>${trcontent}]";
 

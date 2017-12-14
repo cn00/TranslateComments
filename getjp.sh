@@ -8,7 +8,8 @@ basepath=$(cd `dirname $0`;pwd)
 inputf="${inputdir}/jptext.txt"
 rm -f "$inputf"
 
-grep --include=*.cs --include=*.cc  --include=*.cpp --include=*.php --include=*.js --exclude=*.min.js  -e "\s*//*.*$" -e "\/\*.*\*/" -rn $inputdir | 
+grep --include=*.cs --include=*.cc  --include=*.cpp --include=*.php --include=*.js --exclude=*.min.js \
+ -e "[^][[:space:]0-9a-zA-Z+=|_;,./:\"\>\<? ©@$&)(}{ -\*]\+" -rn $inputdir | 
 grep -e "[^][[:space:]0-9a-zA-Z+=|_;,./:\"\>\<? ©@$&)(}{ -\*]\+" |
 sed -f "${basepath}/sed.sed" | while read l;do
 	f="${l/:*/}";
