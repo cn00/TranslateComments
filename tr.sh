@@ -20,16 +20,15 @@ tail -n +${process} ${inputf} | while read l;do
 
 	f="${l/\#*/}";
 	n="${l#*\#}";
-	jpstr="${n#*\#}"
+	str="${n#*\#}"
 	n="${n%%\#*}";
 
-	translated="$(${basepath}/trans.sh -t zh ${jpstr})"
-	echo "translated=[${translated}]"
+	translated="$(${basepath}/trans.sh -t zh ${str})"
 
 	soundmark=$(echo -e "${translated}" | sed -n 2p)
 	trcontent=$(echo -e "${translated}" | sed -n 4p)
 
-	echo "${process}: [${f}]#[${n}]#[${jpstr}${soundmark}=>${trcontent}]";
+	echo -e "${process}: [${f}+${n}]\n#[${str}${soundmark}=>${trcontent}]";
 
 	sed -e ''$n's#$#'"//${soundmark}=>${trcontent}"'#' -i "$f"
 
