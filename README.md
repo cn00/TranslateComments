@@ -1,2 +1,2 @@
 # TranslateJPComments
-调用谷歌翻译接口翻译c++风格代码中的非英文注释
+use translate.google.com API to translate mutibyte langeage comments in cpp-style codes
