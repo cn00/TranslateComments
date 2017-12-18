@@ -1,3 +1,0 @@
-test/csharp/test.cs#5#ファイルを読み込む
-test/csharp/test.cs#6#مذكرة
-test/csharp/test.cs#9#こんにちは世界

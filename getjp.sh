@@ -5,9 +5,10 @@ set -e
 inputdir=$1
 
 basepath=$(cd `dirname $0`;pwd)
-inputf="${inputdir}/jptext.txt"
+inputf="${inputdir}/trtext.txt"
 
 rm -f "${inputf}"
+touch "${inputf}"
 rm -f "${inputf}.tmp"
 
 grep --include=*.cs --include=*.cc  --include=*.cpp --include=*.php --include=*.js --exclude=*.min.js \

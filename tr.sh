@@ -7,7 +7,9 @@ inputdir=$1
 
 basepath=$(cd `dirname $0`;pwd)
 
-inputf="${inputdir}/jptext.txt"
+inputf="${inputdir}/trtext.txt"
+
+to="zh"
 
 process="0"
 if [[ -f "${inputdir}/.process" ]]; then
@@ -23,7 +25,7 @@ tail -n +${process} ${inputf} | while read l;do
 	str="${n#*\#}"
 	n="${n%%\#*}";
 
-	translated="$(${basepath}/trans.sh -t zh ${str})"
+	translated="$(${basepath}/trans.sh -t ${to} ${str})"
 
 	soundmark=$(echo -e "${translated}" | sed -n 2p)
 	trcontent=$(echo -e "${translated}" | sed -n 4p)
