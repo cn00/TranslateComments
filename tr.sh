@@ -30,7 +30,11 @@ tail -n +${process} ${inputf} | while read l;do
 
 	echo -e "${process}: [${f}+${n}]\n#[${str}${soundmark}=>${trcontent}]";
 
-	sed -e ''$n's#$#'"//${soundmark}=>${trcontent}"'#' -i "$f"
+	# # skip translated
+	# sed -n ''$n'p' "$f"
+	# sed -e ''$n's#//GGT>.*$##' -i "$f"
+	# google translate
+	sed -e ''$n's#$#'"//GGT>${soundmark}=>${trcontent}"'#' -i "$f"
 
 	echo "${process}" > "${inputdir}/.process"
 
